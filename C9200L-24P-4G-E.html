@@ -13,7 +13,7 @@
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Cable UTP AMP Cat 6 CMR 23AWG 6-1427200-4 - DS3 Comunicaciones">
   <meta property="og:description" content="Cable de red Categoría 6 profesional. Rollo 1000ft. Compatible con Gigabit Ethernet. U$ 187.00">
-  <meta property="og:image" content="https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg">
+  <meta property="og.image" content="https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg">
   <meta property="og:type" content="product">
   <meta property="og:url" content="https://www.ds3comunicaciones.com/AMP/6-1427200-4.html">
   
@@ -98,13 +98,13 @@
     }
   </style>
   
-  <!-- JSON-LD Schema -->
+  <!-- JSON-LD Schema for Product -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG",
-    "image": "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4.jpg",
+    "image": "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg",
     "description": "Cable UTP AMP NetConnect categoría 6. Rollo de 1000ft. Compatible con Gigabit Ethernet, cumple normas TIA/EIA-568-B.2-1 e ISO 11801.",
     "sku": "6-1427200-4",
     "mpn": "6-1427200-4",
@@ -127,6 +127,34 @@
     }
   }
   </script>
+  
+  <!-- JSON-LD Schema for Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://www.ds3comunicaciones.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "AMP",
+      "item": "https://www.ds3comunicaciones.com/AMP/"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cable Cat 6",
+      "item": "https://www.ds3comunicaciones.com/AMP/precios_amp.html"
+    },{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "6-1427200-4"
+    }]
+  }
+  </script>
 </head>
 
 <body class="antialiased">
@@ -138,7 +166,7 @@
   <header class="glass-card sticky top-0 z-50 shadow-lg">
     <div class="container mx-auto px-4 py-4">
       <nav class="flex items-center justify-between">
-        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition">
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition" aria-label="Abrir menú">
           <i class="fas fa-bars text-xl text-slate-700"></i>
         </button>
         
@@ -158,16 +186,35 @@
   </header>
 
   <!-- Breadcrumb -->
-  <nav class="glass-card border-b border-slate-200">
+  <nav aria-label="breadcrumb" class="glass-card border-b border-slate-200">
     <div class="container mx-auto px-4 py-3">
-      <ol class="flex items-center gap-2 flex-wrap text-sm">
-        <li><a href="https://www.ds3comunicaciones.com/index.html" class="text-slate-600 hover:text-blue-800 transition"><i class="fas fa-home"></i></a></li>
+      <ol class="flex items-center gap-2 flex-wrap text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://www.ds3comunicaciones.com/index.html" class="text-slate-600 hover:text-blue-800 transition" itemprop="item">
+            <i class="fas fa-home"></i>
+            <meta itemprop="name" content="Inicio">
+          </a>
+          <meta itemprop="position" content="1">
+        </li>
         <li><i class="fas fa-chevron-right text-slate-400 text-xs"></i></li>
-        <li><a href="https://www.ds3comunicaciones.com/AMP/index.html" class="text-slate-600 hover:text-blue-800 transition">AMP</a></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="text-slate-600 hover:text-blue-800 transition" itemprop="item">
+            <span itemprop="name">AMP</span>
+          </a>
+          <meta itemprop="position" content="2">
+        </li>
         <li><i class="fas fa-chevron-right text-slate-400 text-xs"></i></li>
-        <li><a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" class="text-slate-600 hover:text-blue-800 transition">Cable Cat 6</a></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" class="text-slate-600 hover:text-blue-800 transition" itemprop="item">
+            <span itemprop="name">Cable Cat 6</span>
+          </a>
+          <meta itemprop="position" content="3">
+        </li>
         <li><i class="fas fa-chevron-right text-slate-400 text-xs"></i></li>
-        <li class="font-semibold text-slate-900">6-1427200-4</li>
+        <li class="font-semibold text-slate-900" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name">6-1427200-4</span>
+          <meta itemprop="position" content="4">
+        </li>
       </ol>
     </div>
   </nav>
@@ -181,7 +228,7 @@
         <div class="h-full overflow-y-auto lg:sticky lg:top-24">
           <div class="lg:hidden flex justify-between items-center p-4 border-b">
             <h2 class="text-lg font-bold text-slate-900">Menú</h2>
-            <button onclick="toggleMobileSidebar()" class="p-2 rounded-lg hover:bg-slate-100">
+            <button onclick="toggleMobileSidebar()" class="p-2 rounded-lg hover:bg-slate-100" aria-label="Cerrar menú">
               <i class="fas fa-times text-xl text-slate-700"></i>
             </button>
           </div>
@@ -196,7 +243,10 @@
                    class="flex items-center justify-center p-3 rounded-lg hover:bg-blue-50 hover-lift">
                   <img src="https://www.ds3comunicaciones.com/belden/images/amp_logo2-91x20.jpg" 
                        alt="Logo AMP" 
-                       class="max-w-[120px] h-auto object-contain">
+                       class="max-w-[120px] h-auto object-contain"
+                       loading="lazy"
+                       width="120"
+                       height="20">
                 </a>
               </li>
               <li>
@@ -204,7 +254,10 @@
                    class="flex items-center justify-center p-3 rounded-lg hover:bg-blue-50 hover-lift">
                   <img src="https://www.ds3comunicaciones.com/cisco/images/logo-cisco.gif" 
                        alt="Logo Cisco" 
-                       class="max-w-[120px] h-auto object-contain">
+                       class="max-w-[120px] h-auto object-contain"
+                       loading="lazy"
+                       width="120"
+                       height="30">
                 </a>
               </li>
               <li>
@@ -212,7 +265,10 @@
                    class="flex items-center justify-center p-3 rounded-lg hover:bg-blue-50 hover-lift">
                   <img src="https://www.ds3comunicaciones.com/belden/images/ubnt_logo-100x47.png" 
                        alt="Logo Ubiquiti" 
-                       class="max-w-[120px] h-auto object-contain">
+                       class="max-w-[120px] h-auto object-contain"
+                       loading="lazy"
+                       width="120"
+                       height="47">
                 </a>
               </li>
             </ul>
@@ -232,7 +288,9 @@
                 <div class="aspect-square flex items-center justify-center overflow-hidden rounded-lg">
                   <img src="https://www.ds3comunicaciones.com/AMP/images/6-1427200-4.jpg" 
                        alt="Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG modelo 6-1427200-4" 
-                       class="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-500">
+                       class="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-500"
+                       width="500"
+                       height="500">
                 </div>
               </div>
               <p class="text-center text-sm text-slate-500 italic">Foto Referencial</p>
@@ -320,12 +378,16 @@
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <a href="https://www.ds3comunicaciones.com/AMP/files/amp-cat6-datasheet.pdf" 
-                     class="flex items-center gap-3 p-4 border-2 border-slate-300 rounded-lg hover:border-red-600 hover:bg-red-50 transition group">
+                     class="flex items-center gap-3 p-4 border-2 border-slate-300 rounded-lg hover:border-red-600 hover:bg-red-50 transition group"
+                     target="_blank"
+                     rel="noopener noreferrer">
                     <i class="fas fa-file-pdf text-red-600 text-2xl"></i>
                     <span class="font-medium text-slate-700 group-hover:text-red-600">Ficha técnica</span>
                   </a>
                   <a href="https://www.ds3comunicaciones.com/AMP/files/amp-installation-guide.pdf" 
-                     class="flex items-center gap-3 p-4 border-2 border-slate-300 rounded-lg hover:border-blue-700 hover:bg-blue-50 transition group">
+                     class="flex items-center gap-3 p-4 border-2 border-slate-300 rounded-lg hover:border-blue-700 hover:bg-blue-50 transition group"
+                     target="_blank"
+                     rel="noopener noreferrer">
                     <i class="fas fa-book-open text-blue-700 text-2xl"></i>
                     <span class="font-medium text-slate-700 group-hover:text-blue-700">Guía instalación</span>
                   </a>
@@ -344,14 +406,13 @@
                 de red de alta exigencia.
               </p>
               <p>
-                Diseñados específicamente para cumplir con todos los requisitos de rendimiento en aplicaciones modernas 
-                de redes, incluyendo <strong>Gigabit Ethernet</strong> (1000BASE-TX), 10/100BASE-TX, Token Ring, 
-                ATM 155 Mbps, 100 Mbps TPMD, Video ISDN, y telefonía analógica/digital (VoIP).
+                Además cumplen con todos los requisitos de rendimiento para aplicaciones modernas de redes, tales como 
+                <strong>Gigabit Ethernet</strong> (1000BASE-TX), 10/100BASE-TX, Token Ring, ATM 155 Mbps, 100 Mbps TPMD, 
+                Video ISDN, y telefonía analógica y digital (VoIP).
               </p>
               <p>
-                El cable viene en un práctico empaque tipo <strong>reel-box</strong> con 1000 pies (305 metros aproximadamente) 
-                libre de empulmes longitudinales, lo que facilita enormemente la instalación profesional y reduce el riesgo 
-                de problemas durante el despliegue.
+                AMP NetConnect categoría 6 cables UTP están disponibles en (CMR) colores estándar incluyendo blanco, gris y azul. 
+                El embalaje es en un reel-in-box, con el estándar 1000ft libres de empulmes longitudinales.
               </p>
             </div>
           </section>
@@ -378,19 +439,19 @@
                     </thead>
                     <tbody class="bg-white">
                       <tr class="border-b border-slate-200">
-                        <td class="py-3 px-4 font-medium text-slate-700">Voltaje nominal</td>
-                        <td class="py-3 px-4 text-slate-900">300 VAC / VDC</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Voltage</td>
+                        <td class="py-3 px-4 text-slate-900">300VAC or VDC</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-3 px-4 font-medium text-slate-700">Velocidad de propagación</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Velocidad Nominal de Propagación</td>
                         <td class="py-3 px-4 text-slate-900">70%</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-3 px-4 font-medium text-slate-700">Temperatura de operación</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Temperatura de Operación</td>
                         <td class="py-3 px-4 text-slate-900">-20°C a +60°C</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-3 px-4 font-medium text-slate-700">Temperatura de almacenamiento</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Temperatura de Almacenamiento</td>
                         <td class="py-3 px-4 text-slate-900">-20°C a +80°C</td>
                       </tr>
                       <tr class="border-b border-slate-200">
@@ -421,14 +482,14 @@
               
               <div class="p-6 bg-white space-y-4 text-slate-700 leading-relaxed">
                 <p>
-                  El rendimiento del cable debe ser verificado independientemente y caracterizado a <strong>600 MHz</strong>. 
-                  El cable es suministrado en un carrete tipo reel-in-box, cumpliendo independientemente con el artículo 770 
-                  del NEC, clasificación CMR (ANSI / UL 1666, IEC 332-1).
+                  Rendimiento del cable debe ser verificado independientemente y caracterizado a <strong>600 MHz</strong>. 
+                  El cable es suministrado en un carrete tipo reel-in-box, cumpliendo independientemente del artículo 770 del NEC, 
+                  clasificación CMR (ANSI / UL 1666, IEC 332-1).
                 </p>
                 <p>
-                  El desempeño del cable horizontal <strong>AMP NETCONNECT</strong> modelo X-1427200-X cumple estrictamente 
-                  con los estándares TIA/EIA-568-B.2-1 e ISO 11801 Clase E, siendo ideal para múltiples aplicaciones como 
-                  Gigabit Ethernet, Token Ring, ATM, TPMD, Video ISDN y telefonía IP (VoIP).
+                  El desempeño del cable horizontal <strong>AMP NETCONNECT</strong> modelo X-1427200-X cumple con el TIA / EIA-568-B.2-1 
+                  e ISO 11801 Clase E. Además de cumplir con todos los requisitos de rendimiento para aplicaciones modernas de redes, 
+                  tales como Gigabit Ethernet, Token Ring, ATM, TPMD, Video ISDN, telefonía analógica y digital y de voz (VoIP).
                 </p>
                 <div class="bg-blue-50 border-l-4 border-blue-700 p-4 rounded">
                   <p class="font-semibold text-blue-900">
@@ -493,3 +554,220 @@
               </div>
             </details>
           </section>
+        </article>
+
+        <!-- RELATED PRODUCTS -->
+        <section class="mt-10">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl lg:text-3xl font-bold text-white bg-gradient-to-r from-slate-800 to-slate-700 py-5 px-6 md:px-8 rounded-xl shadow-lg inline-block">
+              También disponible: Cables AMP en stock
+            </h2>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" 
+               class="glass-card rounded-xl p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
+              <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-800 transition">
+                <i class="fas fa-network-wired text-white text-2xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 mb-2">Catálogo completo</h3>
+              <p class="text-sm text-slate-600">Ver todos los productos AMP</p>
+            </a>
+
+            <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" 
+               class="glass-card rounded-xl p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
+              <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-800 transition">
+                <i class="fas fa-box text-white text-2xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 mb-2">Cat 5e y Cat 6A</h3>
+              <p class="text-sm text-slate-600">Otras categorías disponibles</p>
+            </a>
+
+            <a href="https://www.ds3comunicaciones.com/pedido.html" 
+               class="glass-card rounded-xl p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
+              <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-800 transition">
+                <i class="fas fa-headset text-white text-2xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 mb-2">Asesoría técnica</h3>
+              <p class="text-sm text-slate-600">Contáctenos ahora</p>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT SIDEBAR - Price Lists -->
+      <aside class="hidden lg:block w-64 flex-shrink-0">
+        <div class="glass-card rounded-xl shadow-sm p-6 sticky top-24">
+          <h2 class="text-xl font-bold text-slate-900 mb-6 pb-3 border-b-2 border-blue-700">
+            Listas de Precios
+          </h2>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" 
+                 class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-blue-700 hover:bg-blue-50 hover:translate-x-1 transition font-medium">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Lista AMP</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco.html" 
+                 class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-blue-700 hover:bg-blue-50 hover:translate-x-1 transition font-medium">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Lista CISCO</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.ds3comunicaciones.com/ubiquiti/precios_ubiquiti.html" 
+                 class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-blue-700 hover:bg-blue-50 hover:translate-x-1 transition font-medium">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Lista Ubiquiti</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.ds3comunicaciones.com/panduit/precios_panduit.html" 
+                 class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-blue-700 hover:bg-blue-50 hover:translate-x-1 transition font-medium">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Lista Panduit</span>
+              </a>
+            </li>
+          </ul>
+
+          <!-- Contact Info Widget -->
+          <div class="mt-8 p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+            <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <i class="fas fa-phone-alt text-blue-700"></i>
+              ¿Necesita ayuda?
+            </h3>
+            <p class="text-sm text-slate-700 mb-3">Contáctenos ahora</p>
+            <div class="space-y-2">
+              <a href="https://wa.me/994428965?text=Hola%20necesito%20información%20sobre%206-1427200-4" 
+                 class="flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 font-medium transition"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                994 428 965
+              </a>
+              <a href="https://wa.me/996533223?text=Hola%20necesito%20información%20sobre%206-1427200-4" 
+                 class="flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 font-medium transition"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                996 533 223
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="glass-card mt-10 py-8 border-t-2 border-slate-700">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Column 1: Logo & Social -->
+        <div>
+          <img src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" 
+               alt="Logo DS3 Comunicaciones" 
+               class="w-40 mb-6 bg-white p-2 rounded"
+               loading="lazy"
+               width="160"
+               height="60">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Síguenos</h3>
+          <div class="flex gap-4 mb-6">
+            <a href="https://wa.me/994428965" 
+               class="text-2xl text-emerald-600 hover:text-emerald-700 transition"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:netperu100@hotmail.com" 
+               class="text-2xl text-blue-700 hover:text-blue-800 transition"
+               aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Email</h3>
+            <a href="mailto:netperu100@hotmail.com" 
+               class="text-sm text-slate-700 hover:text-blue-700 transition">
+              netperu100@hotmail.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Solutions -->
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Soluciones</h3>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li><a href="https://www.ds3comunicaciones.com/l-com/AccessPoint.html" class="hover:text-blue-700 transition">Access Point</a></li>
+            <li><a href="https://www.ds3comunicaciones.com/lcom/AntenasMIMO.html" class="hover:text-blue-700 transition">Antenas MIMO</a></li>
+            <li><a href="https://www.ds3comunicaciones.com/l-com/AntenasPanel.html" class="hover:text-blue-700 transition">Antenas de Panel</a></li>
+            <li><a href="https://www.ds3comunicaciones.com/l-com/AntenaSectorial.html" class="hover:text-blue-700 transition">Antenas Sectoriales</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support -->
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Soporte</h3>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li><a href="https://www.ds3comunicaciones.com/soporte.html" class="hover:text-blue-700 transition">Soporte Técnico</a></li>
+            <li><a href="https://ds3comunicaciones.com/us.html" class="hover:text-blue-700 transition">Acerca de Nosotros</a></li>
+            <li><a href="https://www.ds3comunicaciones.com/pedido.html" class="hover:text-blue-700 transition">Realizar Pedido</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Contacto</h3>
+          <div class="space-y-3 mb-6 text-sm">
+            <a href="https://wa.me/994428965" 
+               class="flex items-center gap-2 text-slate-700 hover:text-emerald-700 transition"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fas fa-phone-alt"></i>
+              994 428 965
+            </a>
+            <a href="https://wa.me/996533223" 
+               class="flex items-center gap-2 text-slate-700 hover:text-emerald-700 transition"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fas fa-phone-alt"></i>
+              996 533 223
+            </a>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Horario de Atención</h3>
+            <p class="text-sm text-slate-700">Lunes a Viernes: 9:00 - 18:00</p>
+            <p class="text-sm text-slate-700">Sábados: 9:00 - 13:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-300 pt-6 text-center text-sm text-slate-700">
+        <p class="font-medium">&copy; 2023-2025 DS3 Comunicaciones. Todos los derechos reservados.</p>
+        <p class="mt-2 text-slate-500">Lima, Perú | Soluciones profesionales en redes y telecomunicaciones</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sidebar Toggle Script -->
+  <script>
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('brands-sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('hidden');
+      
+      if (sidebar.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
+</body>
+</html>
