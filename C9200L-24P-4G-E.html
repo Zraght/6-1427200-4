@@ -10,14 +10,6 @@
   <meta name="keywords" content="Cable UTP, AMP, Categoría 6, Cat 6, CMR, 23AWG, cable de red, Gigabit Ethernet, cableado estructurado, Peru, Lima">
   <meta name="author" content="DS3 Comunicaciones">
   
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Cable UTP AMP Cat 6 CMR 23AWG 6-1427200-4 - DS3 Comunicaciones">
-  <meta property="og:description" content="Cable de red Categoría 6 profesional. Rollo 1000ft. Compatible con Gigabit Ethernet. U$ 187.00">
-  <meta property="og:image" content="https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg">
-  <meta property="og:image" content="https://www.ds3comunicaciones.com/AMP/images/caja.jpg">
-  <meta property="og:type" content="product">
-  <meta property="og:url" content="https://www.ds3comunicaciones.com/AMP/6-1427200-4-1.html">
-  
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -41,10 +33,32 @@
       min-height: 100vh;
     }
     
+    /* Top Header Styles */
+    .top-header {
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+      border-bottom: 3px solid #60a5fa;
+    }
+    
     .glass-card {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(203, 213, 225, 0.3);
+    }
+    
+    /* Navigation Styles */
+    .nav-item {
+      transition: all 0.3s ease;
+    }
+    
+    .nav-item:hover {
+      background: rgba(59, 130, 246, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .icon-container {
+      background: white;
+      border-radius: 50%;
+      padding: 2px;
     }
     
     .hover-lift {
@@ -97,6 +111,15 @@
     .arrow {
       transition: transform 0.3s ease;
     }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
   
   <!-- JSON-LD Schema for Product -->
@@ -128,34 +151,6 @@
     }
   }
   </script>
-  
-  <!-- JSON-LD Schema for Breadcrumb -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Inicio",
-      "item": "https://www.ds3comunicaciones.com/"
-    },{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "AMP",
-      "item": "https://www.ds3comunicaciones.com/AMP/"
-    },{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Cable Cat 6",
-      "item": "https://www.ds3comunicaciones.com/AMP/precios_amp.html"
-    },{
-      "@type": "ListItem",
-      "position": 4,
-      "name": "6-1427200-4"
-    }]
-  }
-  </script>
 </head>
 
 <body class="antialiased">
@@ -163,28 +158,130 @@
   <!-- Mobile Sidebar Overlay -->
   <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden" onclick="toggleMobileSidebar()"></div>
   
-  <!-- Header -->
-  <header class="glass-card sticky top-0 z-50 shadow-lg">
-    <div class="container mx-auto px-4 py-4">
-      <nav class="flex items-center justify-between">
-        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition" aria-label="Abrir menú">
-          <i class="fas fa-bars text-xl text-slate-700"></i>
+  <!-- TOP HEADER con información de contacto -->
+  <div class="top-header">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex flex-wrap items-center justify-between gap-3 text-white">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" 
+               alt="DS3 Comunicaciones" 
+               class="h-8 md:h-10 w-auto bg-white rounded px-2"
+               loading="eager">
+        </div>
+        
+        <!-- Información de contacto -->
+        <div class="flex flex-wrap items-center gap-3 md:gap-4 text-xs md:text-sm">
+          <a href="tel:5334339" class="flex items-center gap-1.5 hover:text-blue-200 transition">
+            <i class="fas fa-phone"></i>
+            <div class="hidden sm:block">
+              <div class="font-semibold leading-tight">533-4339</div>
+              <div class="text-[10px] opacity-90">994-428-965</div>
+            </div>
+            <span class="sm:hidden font-semibold">533-4339</span>
+          </a>
+          
+          <a href="tel:996533223" class="flex items-center gap-1.5 hover:text-blue-200 transition">
+            <i class="fas fa-phone"></i>
+            <div class="hidden sm:block">
+              <div class="font-semibold leading-tight">99653-3223</div>
+              <div class="text-[10px] opacity-90">937-514-867</div>
+            </div>
+            <span class="sm:hidden font-semibold">99653-3223</span>
+          </a>
+          
+          <a href="mailto:netperu100@hotmail.com" class="hidden md:flex items-center gap-1.5 hover:text-blue-200 transition">
+            <i class="fas fa-envelope"></i>
+            <span>netperu100@hotmail.com</span>
+          </a>
+          
+          <div class="hidden lg:flex items-center gap-1.5">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Lima, PERÚ</span>
+          </div>
+        </div>
+        
+        <!-- Botón de búsqueda -->
+        <button class="p-2 hover:bg-white/20 rounded-lg transition" aria-label="Buscar">
+          <i class="fas fa-search"></i>
         </button>
-        
-        <a href="https://www.ds3comunicaciones.com/AMP/index.html" 
-           class="flex items-center gap-2 hover:opacity-80 transition">
-          <i class="fas fa-home text-2xl text-slate-700"></i>
-          <span class="font-bold text-lg text-slate-900 hidden sm:inline">AMP</span>
-        </a>
-        
-        <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" 
-           class="px-5 py-2 rounded-lg bg-slate-700 text-white font-medium hover:bg-slate-800 transition text-sm">
-          <i class="fas fa-list mr-2"></i>
-          <span class="hidden sm:inline">Productos</span>
-        </a>
-      </nav>
+      </div>
     </div>
-  </header>
+  </div>
+
+  <!-- NAVIGATION HEADER con categorías de productos -->
+  <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40">
+    <div class="container mx-auto px-2 md:px-4">
+      <div class="relative">
+        <!-- Contenedor con scroll horizontal -->
+        <div class="flex justify-start md:justify-center overflow-x-auto py-2 space-x-1 md:space-x-2 scrollbar-hide">
+          
+          <!-- Switch Catalyst -->
+          <a href="https://www.ds3comunicaciones.com/cisco/catalys_9200l.html"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-network-wired text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Switch Catalyst</span>
+          </a>
+
+          <!-- Cisco Business -->
+          <a href="https://www.ds3comunicaciones.com/cisco/bussines_sg350.html"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-building text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Cisco Business</span>
+          </a>
+
+          <!-- Switch Industrial -->
+          <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_switch_industrial_b.html"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-industry text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Switch Industrial</span>
+          </a>
+
+          <!-- Aironet -->
+          <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_access_point_b.html"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-wifi text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Aironet</span>
+          </a>
+
+          <!-- Teléfono -->
+          <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_telefonos_b.html"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-phone text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Teléfono</span>
+          </a>
+
+          <!-- Meraki -->
+          <a href="https://ds3comunicaciones.com/cisco/precios_cisco_meraki_b.html"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-cloud text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Meraki</span>
+          </a>
+
+          <!-- Transceiver -->
+          <a href="#"
+             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400">
+            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center">
+              <i class="fas fa-plug text-slate-700 text-sm md:text-base"></i>
+            </div>
+            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Transceiver</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <!-- Breadcrumb -->
   <nav aria-label="breadcrumb" class="glass-card border-b border-slate-200">
@@ -284,33 +381,33 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-10">
             
             <!-- PRODUCT GALLERY -->
-<div class="space-y-4">
-  <!-- Imagen principal grande del cable -->
-  <div class="image-container rounded-xl p-6 lg:p-8">
-    <div class="aspect-square flex items-center justify-center overflow-hidden rounded-lg">
-      <img id="mainImage" 
-           src="6-1427200-4-1.jpg" 
-           alt="Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG modelo 6-1427200-4" 
-           class="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-500"
-           width="500"
-           height="500">
-    </div>
-  </div>
-  
-  <!-- Solo una miniatura de la caja -->
-  <button onclick="changeImage('Caja.jpg')" 
-          class="image-container rounded-lg p-3 hover:border-blue-700 transition cursor-pointer w-full">
-    <div class="flex items-center justify-center">
-      <img src="Caja.jpg" 
-           alt="Presentación en caja" 
-           class="h-24 object-contain"
-           loading="lazy">
-    </div>
-    <p class="text-center text-xs text-slate-600 mt-2">Ver presentación en caja</p>
-  </button>
-  
-  <p class="text-center text-sm text-slate-500 italic">Foto Referencial</p>
-</div>
+            <div class="space-y-4">
+              <!-- Imagen principal grande del cable -->
+              <div class="image-container rounded-xl p-6 lg:p-8">
+                <div class="aspect-square flex items-center justify-center overflow-hidden rounded-lg">
+                  <img id="mainImage" 
+                       src="6-1427200-4-1.jpg" 
+                       alt="Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG modelo 6-1427200-4" 
+                       class="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-500"
+                       width="500"
+                       height="500">
+                </div>
+              </div>
+              
+              <!-- Solo una miniatura de la caja -->
+              <button onclick="changeImage('Caja.jpg')" 
+                      class="image-container rounded-lg p-3 hover:border-blue-700 transition cursor-pointer w-full">
+                <div class="flex items-center justify-center">
+                  <img src="Caja.jpg" 
+                       alt="Presentación en caja" 
+                       class="h-24 object-contain"
+                       loading="lazy">
+                </div>
+                <p class="text-center text-xs text-slate-600 mt-2">Ver presentación en caja</p>
+              </button>
+              
+              <p class="text-center text-sm text-slate-500 italic">Foto Referencial</p>
+            </div>
 
             <!-- PRODUCT INFO -->
             <div class="space-y-6">
@@ -783,6 +880,10 @@
       } else {
         document.body.style.overflow = '';
       }
+    }
+    
+    function changeImage(imageSrc) {
+      document.getElementById('mainImage').src = imageSrc;
     }
   </script>
 </body>
