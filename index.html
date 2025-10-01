@@ -285,6 +285,7 @@
             
             <!-- PRODUCT GALLERY -->
 <div class="space-y-4">
+  <!-- Imagen principal grande del cable -->
   <div class="image-container rounded-xl p-6 lg:p-8">
     <div class="aspect-square flex items-center justify-center overflow-hidden rounded-lg">
       <img id="mainImage" 
@@ -296,16 +297,17 @@
     </div>
   </div>
   
-  <!-- Thumbnails -->
-   </button>
-    <button onclick="changeImage('caja.jpg')" 
-            class="image-container rounded-lg p-3 hover:border-blue-700 transition cursor-pointer">
-      <img src="caja.jpg" 
+  <!-- Solo una miniatura de la caja -->
+  <button onclick="changeImage('Caja.jpg')" 
+          class="image-container rounded-lg p-3 hover:border-blue-700 transition cursor-pointer w-full">
+    <div class="flex items-center justify-center">
+      <img src="Caja.jpg" 
            alt="Presentación en caja" 
-           class="w-full h-24 object-contain"
+           class="h-24 object-contain"
            loading="lazy">
-    </button>
-  </div>
+    </div>
+    <p class="text-center text-xs text-slate-600 mt-2">Ver presentación en caja</p>
+  </button>
   
   <p class="text-center text-sm text-slate-500 italic">Foto Referencial</p>
 </div>
