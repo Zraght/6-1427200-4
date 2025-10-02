@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -125,26 +124,76 @@
     /* Scroll indicator animation */
     @keyframes pulse-gentle {
       0%, 100% { opacity: 0.6; transform: translateX(0); }
-      50% { opacity: 1; transform: translateX(-3px); }
+      50% { opacity: 1; transform: translateX(3px); }
     }
     
     .scroll-indicator {
       animation: pulse-gentle 2s ease-in-out infinite;
     }
 
-    /* Mobile menu button */
+    /* Mobile menu button - Mejorado */
     .menu-toggle {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 24px;
+      left: 16px;
       z-index: 60;
       background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 16px rgba(30, 64, 175, 0.4);
     }
 
     @media (min-width: 1024px) {
       .menu-toggle {
         display: none;
+      }
+    }
+
+    /* Mejoras para tabla en móvil */
+    @media (max-width: 640px) {
+      .spec-table {
+        font-size: 0.875rem;
+      }
+      
+      .spec-table td,
+      .spec-table th {
+        padding: 0.75rem 0.5rem !important;
+      }
+    }
+
+    /* Mejora del navegador horizontal */
+    .nav-container {
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-container::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-container::after {
+        display: none;
+      }
+    }
+
+    /* Sticky header mejorado */
+    nav.sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+    }
+
+    /* Mejoras de accesibilidad táctil */
+    @media (max-width: 1024px) {
+      button, a {
+        min-height: 44px;
+        min-width: 44px;
       }
     }
   </style>
@@ -188,31 +237,30 @@
   <!-- Mobile Menu Toggle Button -->
   <button onclick="toggleMobileSidebar()" 
           class="menu-toggle lg:hidden w-14 h-14 rounded-full text-white flex items-center justify-center"
-          aria-label="Abrir menú">
+          aria-label="Abrir menú de marcas">
     <i class="fas fa-bars text-xl"></i>
   </button>
   
   <!-- TOP HEADER con información de contacto -->
   <div class="top-header">
-    <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
-      <div class="flex flex-wrap items-center justify-between gap-2 sm:gap-3 text-white">
+    <div class="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-white">
         <!-- Logo -->
         <div class="flex items-center gap-2 sm:gap-3">
           <img src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" 
                alt="DS3 Comunicaciones" 
-               class="h-7 sm:h-8 md:h-10 w-auto bg-white rounded px-1.5 sm:px-2"
+               class="h-8 sm:h-9 md:h-10 w-auto bg-white rounded px-2"
                loading="eager">
         </div>
         
         <!-- Información de contacto -->
         <div class="flex flex-1 items-center justify-end gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
-          <a href="tel:994428965" class="flex items-center gap-1 sm:gap-1.5 hover:text-blue-300 transition flex-shrink-0">
-            <i class="fas fa-phone text-xs sm:text-sm"></i>
-            <span class="font-semibold hidden xs:inline">994 428 965</span>
-            <span class="font-semibold xs:hidden">994 428 965</span>
+          <a href="tel:994428965" class="flex items-center gap-1.5 hover:text-blue-300 transition">
+            <i class="fas fa-phone text-sm"></i>
+            <span class="font-semibold">994 428 965</span>
           </a>
           
-          <a href="tel:996533223" class="hidden sm:flex items-center gap-1.5 hover:text-blue-300 transition flex-shrink-0">
+          <a href="tel:996533223" class="hidden sm:flex items-center gap-1.5 hover:text-blue-300 transition">
             <i class="fas fa-phone text-sm"></i>
             <span class="font-semibold">996 533 223</span>
           </a>
@@ -222,15 +270,15 @@
             <span class="text-xs lg:text-sm">netperu100@hotmail.com</span>
           </a>
           
-          <div class="hidden lg:flex items-center gap-1.5 text-sm">
+          <div class="hidden lg:flex items-center gap-1.5">
             <i class="fas fa-map-marker-alt"></i>
             <span>Lima, PERÚ</span>
           </div>
         </div>
         
         <!-- Botón de búsqueda -->
-        <button class="p-1.5 sm:p-2 hover:bg-white/20 rounded-lg transition flex-shrink-0" aria-label="Buscar">
-          <i class="fas fa-search text-sm sm:text-base"></i>
+        <button class="p-2 hover:bg-white/20 rounded-lg transition" aria-label="Buscar">
+          <i class="fas fa-search text-base"></i>
         </button>
       </div>
     </div>
@@ -239,77 +287,72 @@
   <!-- NAVIGATION HEADER con categorías de productos -->
   <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40">
     <div class="container mx-auto px-2 md:px-4">
-      <div class="relative">
+      <div class="nav-container">
         <!-- Contenedor con scroll horizontal -->
-        <div class="flex justify-start md:justify-center overflow-x-auto py-2 space-x-1 md:space-x-2 scrollbar-hide snap-x snap-mandatory">
+        <div class="flex justify-start md:justify-center overflow-x-auto py-2.5 space-x-2 scrollbar-hide snap-x snap-mandatory">
           
           <!-- Switch Catalyst -->
           <a href="https://www.ds3comunicaciones.com/cisco/catalys_9200l.html"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-network-wired text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-network-wired text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Switch Catalyst</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Switch Catalyst</span>
           </a>
 
           <!-- Cisco Business -->
           <a href="https://www.ds3comunicaciones.com/cisco/bussines_sg350.html"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-building text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-building text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Cisco Business</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Cisco Business</span>
           </a>
 
           <!-- Switch Industrial -->
           <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_switch_industrial_b.html"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-industry text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-industry text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Switch Industrial</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Switch Industrial</span>
           </a>
 
           <!-- Aironet -->
           <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_access_point_b.html"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-wifi text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-wifi text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Aironet</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Aironet</span>
           </a>
 
           <!-- Teléfono -->
           <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_telefonos_b.html"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-phone text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Teléfono</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Teléfono</span>
           </a>
 
           <!-- Meraki -->
           <a href="https://ds3comunicaciones.com/cisco/precios_cisco_meraki_b.html"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-cloud text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-cloud text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Meraki</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Meraki</span>
           </a>
 
           <!-- Transceiver -->
           <a href="#"
-             class="nav-item flex items-center p-1.5 md:p-2 rounded-lg min-w-fit flex-shrink-0 space-x-1 md:space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
-            <div class="icon-container h-6 w-6 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-plug text-slate-700 text-xs md:text-base"></i>
+             class="nav-item flex items-center p-2 md:p-2.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 border border-transparent hover:border-blue-400 snap-start">
+            <div class="icon-container h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-plug text-slate-700 text-sm md:text-base"></i>
             </div>
-            <span class="text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">Transceiver</span>
+            <span class="text-sm md:text-sm font-medium text-gray-700 whitespace-nowrap">Transceiver</span>
           </a>
-        </div>
-        
-        <!-- Scroll indicator -->
-        <div class="absolute right-2 top-1/2 -translate-y-1/2 md:hidden pointer-events-none">
-          <i class="fas fa-chevron-right text-blue-600 text-sm scroll-indicator"></i>
         </div>
       </div>
     </div>
@@ -317,11 +360,11 @@
 
   <!-- Breadcrumb -->
   <nav aria-label="breadcrumb" class="glass-card border-b border-slate-200">
-    <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
-      <ol class="flex items-center gap-1.5 sm:gap-2 flex-wrap text-xs sm:text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <div class="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
+      <ol class="flex items-center gap-2 flex-wrap text-xs sm:text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="https://www.ds3comunicaciones.com/index.html" class="text-slate-600 hover:text-blue-800 transition" itemprop="item">
-            <i class="fas fa-home text-xs sm:text-sm"></i>
+            <i class="fas fa-home text-sm"></i>
             <meta itemprop="name" content="Inicio">
           </a>
           <meta itemprop="position" content="1">
@@ -353,24 +396,24 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="container mx-auto px-2 sm:px-4 py-4 sm:py-6 lg:py-10">
-    <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8">
+  <main class="container mx-auto px-3 sm:px-4 py-5 sm:py-6 lg:py-10">
+    <div class="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8">
       
       <!-- LEFT SIDEBAR - Brands -->
       <aside id="brands-sidebar" class="mobile-sidebar lg:transform-none fixed lg:static inset-y-0 left-0 w-72 lg:w-64 bg-white lg:bg-transparent z-50 lg:z-auto shadow-xl lg:shadow-none overflow-y-auto">
         <div class="h-full lg:sticky lg:top-24">
           <div class="lg:hidden flex justify-between items-center p-4 border-b bg-white sticky top-0 z-10">
-            <h2 class="text-lg font-bold text-slate-900">Menú</h2>
+            <h2 class="text-lg font-bold text-slate-900">Nuestras Marcas</h2>
             <button onclick="toggleMobileSidebar()" class="p-2 rounded-lg hover:bg-slate-100" aria-label="Cerrar menú">
               <i class="fas fa-times text-xl text-slate-700"></i>
             </button>
           </div>
           
-          <div class="glass-card rounded-xl shadow-sm p-4 sm:p-6 m-2 lg:m-0">
-            <h2 class="text-lg sm:text-xl font-bold text-slate-900 mb-4 sm:mb-6 pb-3 border-b-2 border-blue-700">
+          <div class="glass-card rounded-xl shadow-sm p-5 m-3 lg:m-0">
+            <h2 class="text-xl font-bold text-slate-900 mb-5 pb-3 border-b-2 border-blue-700 hidden lg:block">
               Nuestras Marcas
             </h2>
-            <ul class="space-y-2">
+            <ul class="space-y-3">
               <li>
                 <a href="https://www.ds3comunicaciones.com/AMP/index.html" 
                    class="flex items-center justify-center p-3 rounded-lg hover:bg-blue-50 hover-lift">
@@ -411,14 +454,14 @@
 
       <!-- PRODUCT CONTENT -->
       <div class="flex-1 max-w-6xl mx-auto w-full">
-        <article class="glass-card rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl p-3 sm:p-4 md:p-6 lg:p-8">
+        <article class="glass-card rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-5 md:p-6 lg:p-8">
           
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 lg:gap-12 mb-6 sm:mb-8 lg:mb-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 lg:gap-10 mb-8 sm:mb-9 lg:mb-10">
             
             <!-- PRODUCT GALLERY -->
-            <div class="space-y-3 sm:space-y-4">
+            <div class="space-y-4">
               <!-- Imagen principal grande del cable -->
-              <div class="image-container rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8">
+              <div class="image-container rounded-xl p-5 sm:p-6 lg:p-8">
                 <div class="aspect-square flex items-center justify-center overflow-hidden rounded-lg">
                   <img id="mainImage" 
                        src="6-1427200-4-1.jpg" 
@@ -431,109 +474,105 @@
               
               <!-- Solo una miniatura de la caja -->
               <button onclick="changeImage('Caja.jpg')" 
-                      class="image-container rounded-lg p-2 sm:p-3 hover:border-blue-700 transition cursor-pointer w-full">
+                      class="image-container rounded-lg p-3 hover:border-blue-700 transition cursor-pointer w-full">
                 <div class="flex items-center justify-center">
                   <img src="Caja.jpg" 
                        alt="Presentación en caja" 
-                       class="h-16 sm:h-20 md:h-24 object-contain"
+                       class="h-20 sm:h-24 object-contain"
                        loading="lazy">
                 </div>
                 <p class="text-center text-xs text-slate-600 mt-2">Ver presentación en caja</p>
               </button>
               
-              <p class="text-center text-xs sm:text-sm text-slate-500 italic">Foto Referencial</p>
+              <p class="text-center text-sm text-slate-500 italic">Foto Referencial</p>
             </div>
 
             <!-- PRODUCT INFO -->
-            <div class="space-y-4 sm:space-y-6">
+            <div class="space-y-5 sm:space-y-6">
               
               <!-- Header -->
               <div>
                 <div class="flex items-center gap-2 mb-3 flex-wrap">
-                  <span class="px-2.5 sm:px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs sm:text-sm font-semibold border border-emerald-200">
+                  <span class="px-3 py-1.5 bg-emerald-100 text-emerald-800 rounded-full text-sm font-semibold border border-emerald-200">
                     <i class="fas fa-check-circle mr-1"></i>En Stock
                   </span>
-                  <span class="px-2.5 sm:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm font-semibold border border-blue-200">
+                  <span class="px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold border border-blue-200">
                     Categoría 6
                   </span>
                 </div>
-                <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-2 sm:mb-3">
+                <h1 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-3">
                   Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG
                 </h1>
-                <p class="text-base sm:text-lg text-slate-600 font-medium">Modelo: <span class="text-slate-900">6-1427200-4</span></p>
+                <p class="text-lg text-slate-600 font-medium">Modelo: <span class="text-slate-900">6-1427200-4</span></p>
               </div>
               
               <!-- Price & CTA -->
-              <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-lg sm:rounded-xl p-4 sm:p-6 text-white shadow-xl">
-                <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-3 sm:gap-4 mb-4">
+              <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-xl p-5 sm:p-6 text-white shadow-xl">
+                <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-4 mb-5">
                   <div>
-                    <p class="text-xs sm:text-sm opacity-90 mb-1">Precio por rollo</p>
-                    <p class="text-3xl sm:text-4xl md:text-5xl font-bold">U$ 187<span class="text-xl sm:text-2xl">.00</span></p>
+                    <p class="text-sm opacity-90 mb-1">Precio por rollo</p>
+                    <p class="text-4xl sm:text-5xl font-bold">U$ 187<span class="text-2xl">.00</span></p>
                   </div>
-                  <div class="text-left sm:text-right bg-white bg-opacity-20 rounded-lg px-3 sm:px-4 py-2 backdrop-blur">
+                  <div class="text-left sm:text-right bg-white bg-opacity-20 rounded-lg px-4 py-2.5 backdrop-blur w-full sm:w-auto">
                     <p class="text-xs opacity-90">Contenido</p>
-                    <p class="text-base sm:text-lg font-bold">1000 ft</p>
+                    <p class="text-lg font-bold">1000 ft</p>
                     <p class="text-xs opacity-75">(305 metros)</p>
                   </div>
                 </div>
                 
                 <a href="https://www.ds3comunicaciones.com/pedido.html" 
-                   class="block text-center bg-white text-blue-900 font-bold py-3 sm:py-4 rounded-lg hover:bg-slate-50 transition shadow-lg text-sm sm:text-base">
+                   class="block text-center bg-white text-blue-900 font-bold py-4 rounded-lg hover:bg-slate-50 transition shadow-lg text-base">
                   <i class="fas fa-shopping-cart mr-2"></i>Comprar ahora
                 </a>
                 
-                <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm opacity-90">
+                <div class="mt-4 flex items-center justify-center gap-2 text-sm opacity-90">
                   <i class="fas fa-shield-alt"></i>
                   <span>Compra segura - Envíos a todo Perú</span>
                 </div>
               </div>
 
               <!-- Key Features -->
-              <div class="bg-slate-50 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-slate-200">
-                <h2 class="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+              <div class="bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200">
+                <h2 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                   <i class="fas fa-star text-yellow-500"></i>
                   Características principales
                 </h2>
-                <ul class="space-y-2 sm:space-y-3">
-                  <li class="flex items-start gap-2 sm:gap-3">
-                    <i class="fas fa-check-circle text-emerald-600 text-base sm:text-lg mt-0.5 flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base text-slate-700">Chaqueta CMR 23AWG para instalaciones plenum</span>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-emerald-600 text-lg mt-0.5 flex-shrink-0"></i>
+                    <span class="text-base text-slate-700">Compatible con Gigabit Ethernet (1000BASE-TX)</span>
                   </li>
-                  <li class="flex items-start gap-2 sm:gap-3">
-                    <i class="fas fa-check-circle text-emerald-600 text-base sm:text-lg mt-0.5 flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base text-slate-700">Compatible con Gigabit Ethernet (1000BASE-TX)</span>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-emerald-600 text-lg mt-0.5 flex-shrink-0"></i>
+                    <span class="text-base text-slate-700">Empaque tipo reel-box sin empulmes longitudinales</span>
                   </li>
-                  <li class="flex items-start gap-2 sm:gap-3">
-                    <i class="fas fa-check-circle text-emerald-600 text-base sm:text-lg mt-0.5 flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base text-slate-700">Empaque tipo reel-box sin empulmes longitudinales</span>
-                  </li>
-                  <li class="flex items-start gap-2 sm:gap-3">
-                    <i class="fas fa-check-circle text-emerald-600 text-base sm:text-lg mt-0.5 flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base text-slate-700">Cumple norma ISO 11801 Clase E</span>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-emerald-600 text-lg mt-0.5 flex-shrink-0"></i>
+                    <span class="text-base text-slate-700">Cumple norma ISO 11801 Clase E</span>
                   </li>
                 </ul>
               </div>
 
               <!-- Downloads -->
               <div>
-                <h2 class="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <h2 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                   <i class="fas fa-download text-blue-700"></i>
                   Recursos descargables
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <a href="https://www.ds3comunicaciones.com/AMP/files/amp-cat6-datasheet.pdf" 
-                     class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 border-2 border-slate-300 rounded-lg hover:border-red-600 hover:bg-red-50 transition group"
+                     class="flex items-center gap-3 p-4 border-2 border-slate-300 rounded-lg hover:border-red-600 hover:bg-red-50 transition group"
                      target="_blank"
                      rel="noopener noreferrer">
-                    <i class="fas fa-file-pdf text-red-600 text-xl sm:text-2xl flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base font-medium text-slate-700 group-hover:text-red-600">Ficha técnica</span>
+                    <i class="fas fa-file-pdf text-red-600 text-2xl flex-shrink-0"></i>
+                    <span class="text-base font-medium text-slate-700 group-hover:text-red-600">Ficha técnica</span>
                   </a>
                   <a href="https://www.ds3comunicaciones.com/AMP/files/amp-installation-guide.pdf" 
-                     class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 border-2 border-slate-300 rounded-lg hover:border-blue-700 hover:bg-blue-50 transition group"
+                     class="flex items-center gap-3 p-4 border-2 border-slate-300 rounded-lg hover:border-blue-700 hover:bg-blue-50 transition group"
                      target="_blank"
                      rel="noopener noreferrer">
-                    <i class="fas fa-book-open text-blue-700 text-xl sm:text-2xl flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base font-medium text-slate-700 group-hover:text-blue-700">Guía instalación</span>
+                    <i class="fas fa-book-open text-blue-700 text-2xl flex-shrink-0"></i>
+                    <span class="text-base font-medium text-slate-700 group-hover:text-blue-700">Guía instalación</span>
                   </a>
                 </div>
               </div>
@@ -541,9 +580,9 @@
           </div>
 
           <!-- FULL DESCRIPTION -->
-          <section class="mb-6 sm:mb-8 lg:mb-10 border-t pt-6 sm:pt-8">
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-l-4 border-blue-700 pl-3 sm:pl-4">Descripción del producto</h2>
-            <div class="space-y-3 sm:space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+          <section class="mb-8 sm:mb-9 lg:mb-10 border-t pt-7 sm:pt-8">
+            <h2 class="text-2xl sm:text-2xl font-bold text-slate-900 mb-5 sm:mb-6 border-l-4 border-blue-700 pl-4">Descripción del producto</h2>
+            <div class="space-y-4 text-base text-slate-700 leading-relaxed">
               <p>
                 Los <strong>Cables AMP NetConnect categoría 6</strong> exceden los requerimientos establecidos por las normas 
                 TIA/EIA-568-B.2-1 e ISO 11801 Clase E, garantizando un rendimiento superior y confiable en aplicaciones 
@@ -562,49 +601,49 @@
           </section>
 
           <!-- TECHNICAL SPECS -->
-          <section class="mb-6 sm:mb-8 lg:mb-10">
-            <details open class="group border-2 border-slate-200 rounded-lg sm:rounded-xl overflow-hidden hover:border-blue-400 transition">
-              <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 cursor-pointer transition">
-                <h2 class="text-base sm:text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 sm:gap-3">
+          <section class="mb-8 sm:mb-9 lg:mb-10">
+            <details open class="group border-2 border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 transition">
+              <summary class="flex items-center justify-between p-5 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 cursor-pointer transition">
+                <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-3">
                   <i class="fas fa-cog text-blue-700"></i>
                   Especificaciones técnicas
                 </h2>
-                <i class="fas fa-chevron-down text-slate-600 arrow text-sm sm:text-base"></i>
+                <i class="fas fa-chevron-down text-slate-600 arrow"></i>
               </summary>
               
-              <div class="p-4 sm:p-6 bg-white">
+              <div class="p-5 sm:p-6 bg-white">
                 <div class="overflow-x-auto rounded-lg border-2 border-slate-300">
-                  <table class="w-full spec-table text-sm sm:text-base">
+                  <table class="w-full spec-table text-base">
                     <thead>
                       <tr class="bg-slate-800 text-white">
-                        <th class="text-left py-3 sm:py-4 px-3 sm:px-4 font-semibold">Especificación</th>
-                        <th class="text-left py-3 sm:py-4 px-3 sm:px-4 font-semibold">Valor</th>
+                        <th class="text-left py-4 px-4 font-semibold">Especificación</th>
+                        <th class="text-left py-4 px-4 font-semibold">Valor</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white">
                       <tr class="border-b border-slate-200">
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 font-medium text-slate-700">Voltage</td>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-900">300VAC or VDC</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Voltage</td>
+                        <td class="py-3 px-4 text-slate-900">300VAC or VDC</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 font-medium text-slate-700">Velocidad Nominal de Propagación</td>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-900">70%</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Velocidad Nominal de Propagación</td>
+                        <td class="py-3 px-4 text-slate-900">70%</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 font-medium text-slate-700">Temperatura de Operación</td>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-900">-20°C a +60°C</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Temperatura de Operación</td>
+                        <td class="py-3 px-4 text-slate-900">-20°C a +60°C</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 font-medium text-slate-700">Temperatura de Almacenamiento</td>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-900">-20°C a +80°C</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Temperatura de Almacenamiento</td>
+                        <td class="py-3 px-4 text-slate-900">-20°C a +80°C</td>
                       </tr>
                       <tr class="border-b border-slate-200">
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 font-medium text-slate-700">Calibre del conductor</td>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-900">23 AWG</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Calibre del conductor</td>
+                        <td class="py-3 px-4 text-slate-900">23 AWG</td>
                       </tr>
                       <tr>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 font-medium text-slate-700">Tipo de chaqueta</td>
-                        <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-900">CMR (Riser)</td>
+                        <td class="py-3 px-4 font-medium text-slate-700">Tipo de chaqueta</td>
+                        <td class="py-3 px-4 text-slate-900">CMR (Riser)</td>
                       </tr>
                     </tbody>
                   </table>
@@ -614,17 +653,17 @@
           </section>
 
           <!-- ADDITIONAL INFO -->
-          <section class="mb-6 sm:mb-8 lg:mb-10">
-            <details class="group border-2 border-slate-200 rounded-lg sm:rounded-xl overflow-hidden hover:border-blue-400 transition">
-              <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 cursor-pointer transition">
-                <h2 class="text-base sm:text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 sm:gap-3">
+          <section class="mb-8 sm:mb-9 lg:mb-10">
+            <details class="group border-2 border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 transition">
+              <summary class="flex items-center justify-between p-5 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 cursor-pointer transition">
+                <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-3">
                   <i class="fas fa-info-circle text-blue-700"></i>
                   Información adicional
                 </h2>
-                <i class="fas fa-chevron-down text-slate-600 arrow text-sm sm:text-base"></i>
+                <i class="fas fa-chevron-down text-slate-600 arrow"></i>
               </summary>
               
-              <div class="p-4 sm:p-6 bg-white space-y-3 sm:space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+              <div class="p-5 sm:p-6 bg-white space-y-4 text-base text-slate-700 leading-relaxed">
                 <p>
                   Rendimiento del cable debe ser verificado independientemente y caracterizado a <strong>600 MHz</strong>. 
                   El cable es suministrado en un carrete tipo reel-in-box, cumpliendo independientemente del artículo 770 del NEC, 
@@ -635,8 +674,8 @@
                   e ISO 11801 Clase E. Además de cumplir con todos los requisitos de rendimiento para aplicaciones modernas de redes, 
                   tales como Gigabit Ethernet, Token Ring, ATM, TPMD, Video ISDN, telefonía analógica y digital y de voz (VoIP).
                 </p>
-                <div class="bg-blue-50 border-l-4 border-blue-700 p-3 sm:p-4 rounded">
-                  <p class="font-semibold text-blue-900 text-sm sm:text-base">
+                <div class="bg-blue-50 border-l-4 border-blue-700 p-4 rounded">
+                  <p class="font-semibold text-blue-900">
                     <i class="fas fa-certificate mr-2"></i>
                     Certificaciones: NEC Art. 770, CMR (ANSI/UL 1666), IEC 332-1
                   </p>
@@ -646,51 +685,51 @@
           </section>
 
           <!-- CERTIFICATIONS -->
-          <section class="mb-6 sm:mb-8 lg:mb-10">
-            <details class="group border-2 border-slate-200 rounded-lg sm:rounded-xl overflow-hidden hover:border-blue-400 transition">
-              <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 cursor-pointer transition">
-                <h2 class="text-base sm:text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 sm:gap-3">
+          <section class="mb-8 sm:mb-9 lg:mb-10">
+            <details class="group border-2 border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 transition">
+              <summary class="flex items-center justify-between p-5 bg-gradient-to-r from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 cursor-pointer transition">
+                <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-3">
                   <i class="fas fa-award text-blue-700"></i>
                   Cumplimiento de normas
                 </h2>
-                <i class="fas fa-chevron-down text-slate-600 arrow text-sm sm:text-base"></i>
+                <i class="fas fa-chevron-down text-slate-600 arrow"></i>
               </summary>
               
-              <div class="p-4 sm:p-6 bg-white">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                  <div class="feature-card p-3 sm:p-4 rounded-lg">
-                    <div class="flex items-start gap-2 sm:gap-3">
-                      <i class="fas fa-check-circle text-emerald-600 text-lg sm:text-xl mt-1 flex-shrink-0"></i>
+              <div class="p-5 sm:p-6 bg-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="feature-card p-4 rounded-lg">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-check-circle text-emerald-600 text-xl mt-1 flex-shrink-0"></i>
                       <div>
-                        <h3 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">TIA/EIA-568-B.2-1</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Estándar de cableado estructurado</p>
+                        <h3 class="font-bold text-slate-900 mb-1">TIA/EIA-568-B.2-1</h3>
+                        <p class="text-sm text-slate-600">Estándar de cableado estructurado</p>
                       </div>
                     </div>
                   </div>
-                  <div class="feature-card p-3 sm:p-4 rounded-lg">
-                    <div class="flex items-start gap-2 sm:gap-3">
-                      <i class="fas fa-check-circle text-emerald-600 text-lg sm:text-xl mt-1 flex-shrink-0"></i>
+                  <div class="feature-card p-4 rounded-lg">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-check-circle text-emerald-600 text-xl mt-1 flex-shrink-0"></i>
                       <div>
-                        <h3 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">ISO 11801 Clase E</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Norma internacional</p>
+                        <h3 class="font-bold text-slate-900 mb-1">ISO 11801 Clase E</h3>
+                        <p class="text-sm text-slate-600">Norma internacional</p>
                       </div>
                     </div>
                   </div>
-                  <div class="feature-card p-3 sm:p-4 rounded-lg">
-                    <div class="flex items-start gap-2 sm:gap-3">
-                      <i class="fas fa-check-circle text-emerald-600 text-lg sm:text-xl mt-1 flex-shrink-0"></i>
+                  <div class="feature-card p-4 rounded-lg">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-check-circle text-emerald-600 text-xl mt-1 flex-shrink-0"></i>
                       <div>
-                        <h3 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">NEC Art. 770 CMR</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Código eléctrico nacional</p>
+                        <h3 class="font-bold text-slate-900 mb-1">NEC Art. 770 CMR</h3>
+                        <p class="text-sm text-slate-600">Código eléctrico nacional</p>
                       </div>
                     </div>
                   </div>
-                  <div class="feature-card p-3 sm:p-4 rounded-lg">
-                    <div class="flex items-start gap-2 sm:gap-3">
-                      <i class="fas fa-check-circle text-emerald-600 text-lg sm:text-xl mt-1 flex-shrink-0"></i>
+                  <div class="feature-card p-4 rounded-lg">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-check-circle text-emerald-600 text-xl mt-1 flex-shrink-0"></i>
                       <div>
-                        <h3 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">UL 1666 / IEC 332-1</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Certificación de seguridad</p>
+                        <h3 class="font-bold text-slate-900 mb-1">UL 1666 / IEC 332-1</h3>
+                        <p class="text-sm text-slate-600">Certificación de seguridad</p>
                       </div>
                     </div>
                   </div>
@@ -701,39 +740,39 @@
         </article>
 
         <!-- RELATED PRODUCTS -->
-        <section class="mt-6 sm:mt-8 lg:mt-10">
-          <div class="text-center mb-6 sm:mb-8">
-            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white bg-gradient-to-r from-slate-800 to-slate-700 py-4 sm:py-5 px-4 sm:px-6 md:px-8 rounded-lg sm:rounded-xl shadow-lg inline-block">
+        <section class="mt-8 sm:mt-9 lg:mt-10">
+          <div class="text-center mb-7 sm:mb-8">
+            <h2 class="text-2xl sm:text-2xl lg:text-3xl font-bold text-white bg-gradient-to-r from-slate-800 to-slate-700 py-5 px-6 rounded-xl shadow-lg inline-block">
               También disponible: Cables AMP en stock
             </h2>
           </div>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" 
-               class="glass-card rounded-lg sm:rounded-xl p-4 sm:p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
-              <div class="w-14 h-14 sm:w-16 sm:h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-blue-800 transition">
-                <i class="fas fa-network-wired text-white text-xl sm:text-2xl"></i>
+               class="glass-card rounded-xl p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
+              <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-800 transition">
+                <i class="fas fa-network-wired text-white text-2xl"></i>
               </div>
-              <h3 class="font-bold text-slate-900 mb-2 text-sm sm:text-base">Catálogo completo</h3>
-              <p class="text-xs sm:text-sm text-slate-600">Ver todos los productos AMP</p>
+              <h3 class="font-bold text-slate-900 mb-2 text-base">Catálogo completo</h3>
+              <p class="text-sm text-slate-600">Ver todos los productos AMP</p>
             </a>
 
             <a href="https://www.ds3comunicaciones.com/AMP/precios_amp.html" 
-               class="glass-card rounded-lg sm:rounded-xl p-4 sm:p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
-              <div class="w-14 h-14 sm:w-16 sm:h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-blue-800 transition">
-                <i class="fas fa-box text-white text-xl sm:text-2xl"></i>
+               class="glass-card rounded-xl p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700">
+              <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-800 transition">
+                <i class="fas fa-box text-white text-2xl"></i>
               </div>
-              <h3 class="font-bold text-slate-900 mb-2 text-sm sm:text-base">Cat 5e y Cat 6A</h3>
-              <p class="text-xs sm:text-sm text-slate-600">Otras categorías disponibles</p>
+              <h3 class="font-bold text-slate-900 mb-2 text-base">Cat 5e y Cat 6A</h3>
+              <p class="text-sm text-slate-600">Otras categorías disponibles</p>
             </a>
 
             <a href="https://www.ds3comunicaciones.com/pedido.html" 
-               class="glass-card rounded-lg sm:rounded-xl p-4 sm:p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700 sm:col-span-2 lg:col-span-1">
-              <div class="w-14 h-14 sm:w-16 sm:h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-blue-800 transition">
-                <i class="fas fa-headset text-white text-xl sm:text-2xl"></i>
+               class="glass-card rounded-xl p-6 hover-lift text-center group border-2 border-transparent hover:border-blue-700 sm:col-span-2 lg:col-span-1">
+              <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-800 transition">
+                <i class="fas fa-headset text-white text-2xl"></i>
               </div>
-              <h3 class="font-bold text-slate-900 mb-2 text-sm sm:text-base">Asesoría técnica</h3>
-              <p class="text-xs sm:text-sm text-slate-600">Contáctenos ahora</p>
+              <h3 class="font-bold text-slate-900 mb-2 text-base">Asesoría técnica</h3>
+              <p class="text-sm text-slate-600">Contáctenos ahora</p>
             </a>
           </div>
         </section>
@@ -806,20 +845,20 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="glass-card mt-6 sm:mt-8 lg:mt-10 py-6 sm:py-8 border-t-2 border-slate-700">
-    <div class="container mx-auto px-3 sm:px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+  <footer class="glass-card mt-8 sm:mt-9 lg:mt-10 py-7 sm:py-8 border-t-2 border-slate-700">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 sm:gap-8 mb-7 sm:mb-8">
         
         <!-- Column 1: Logo & Social -->
         <div>
           <img src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" 
                alt="Logo DS3 Comunicaciones" 
-               class="w-32 sm:w-40 mb-4 sm:mb-6 bg-white p-2 rounded"
+               class="w-40 mb-6 bg-white p-2 rounded"
                loading="lazy"
                width="160"
                height="60">
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-3">Síguenos</h3>
-          <div class="flex gap-4 mb-4 sm:mb-6">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Síguenos</h3>
+          <div class="flex gap-4 mb-6">
             <a href="https://wa.me/994428965" 
                class="text-2xl text-emerald-600 hover:text-emerald-700 transition"
                target="_blank"
@@ -834,9 +873,9 @@
             </a>
           </div>
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">Email</h3>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Email</h3>
             <a href="mailto:netperu100@hotmail.com" 
-               class="text-xs sm:text-sm text-slate-700 hover:text-blue-700 transition break-all">
+               class="text-sm text-slate-700 hover:text-blue-700 transition break-all">
               netperu100@hotmail.com
             </a>
           </div>
@@ -844,8 +883,8 @@
 
         <!-- Column 2: Solutions -->
         <div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-4">Soluciones</h3>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Soluciones</h3>
+          <ul class="space-y-2 text-sm text-slate-700">
             <li><a href="https://www.ds3comunicaciones.com/l-com/AccessPoint.html" class="hover:text-blue-700 transition">Access Point</a></li>
             <li><a href="https://www.ds3comunicaciones.com/lcom/AntenasMIMO.html" class="hover:text-blue-700 transition">Antenas MIMO</a></li>
             <li><a href="https://www.ds3comunicaciones.com/l-com/AntenasPanel.html" class="hover:text-blue-700 transition">Antenas de Panel</a></li>
@@ -855,8 +894,8 @@
 
         <!-- Column 3: Support -->
         <div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-4">Soporte</h3>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Soporte</h3>
+          <ul class="space-y-2 text-sm text-slate-700">
             <li><a href="https://www.ds3comunicaciones.com/soporte.html" class="hover:text-blue-700 transition">Soporte Técnico</a></li>
             <li><a href="https://ds3comunicaciones.com/us.html" class="hover:text-blue-700 transition">Acerca de Nosotros</a></li>
             <li><a href="https://www.ds3comunicaciones.com/pedido.html" class="hover:text-blue-700 transition">Realizar Pedido</a></li>
@@ -865,8 +904,8 @@
 
         <!-- Column 4: Contact -->
         <div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-4">Contacto</h3>
-          <div class="space-y-3 mb-4 sm:mb-6 text-xs sm:text-sm">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Contacto</h3>
+          <div class="space-y-3 mb-6 text-sm">
             <a href="https://wa.me/994428965" 
                class="flex items-center gap-2 text-slate-700 hover:text-emerald-700 transition"
                target="_blank"
@@ -883,14 +922,14 @@
             </a>
           </div>
           <div>
-            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-2">Horario de Atención</h3>
-            <p class="text-xs sm:text-sm text-slate-700">Lunes a Viernes: 9:00 - 18:00</p>
-            <p class="text-xs sm:text-sm text-slate-700">Sábados: 9:00 - 13:00</p>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Horario de Atención</h3>
+            <p class="text-sm text-slate-700">Lunes a Viernes: 9:00 - 18:00</p>
+            <p class="text-sm text-slate-700">Sábados: 9:00 - 13:00</p>
           </div>
         </div>
       </div>
 
-      <div class="border-t border-slate-300 pt-4 sm:pt-6 text-center text-xs sm:text-sm text-slate-700">
+      <div class="border-t border-slate-300 pt-6 text-center text-sm text-slate-700">
         <p class="font-medium">&copy; 2023-2025 DS3 Comunicaciones. Todos los derechos reservados.</p>
         <p class="mt-2 text-slate-500">Lima, Perú | Soluciones profesionales en redes y telecomunicaciones</p>
       </div>
@@ -918,8 +957,4 @@
     }
   </script>
 </body>
-</html>Cable Categoría 6 certificado TIA/EIA-568-B.2-1</span>
-                  </li>
-                  <li class="flex items-start gap-2 sm:gap-3">
-                    <i class="fas fa-check-circle text-emerald-600 text-base sm:text-lg mt-0.5 flex-shrink-0"></i>
-                    <span class="text-sm sm:text-base text-slate-700">
+</html> 
