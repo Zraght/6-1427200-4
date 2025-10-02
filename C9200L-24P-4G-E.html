@@ -131,7 +131,7 @@
       animation: pulse-gentle 2s ease-in-out infinite;
     }
 
-    /* Mobile menu button - Mejorado */
+    /* Mobile menu button */
     .menu-toggle {
       position: fixed;
       bottom: 24px;
@@ -196,6 +196,49 @@
         min-width: 44px;
       }
     }
+
+    /* Contact info grid optimizado para móvil */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .contact-grid {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 0.75rem;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (min-width: 640px) {
+      .contact-item {
+        background: transparent;
+        padding: 0;
+        font-size: 0.875rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .contact-item {
+        font-size: 0.875rem;
+      }
+    }
   </style>
   
   <!-- JSON-LD Schema for Product -->
@@ -241,43 +284,53 @@
     <i class="fas fa-bars text-xl"></i>
   </button>
   
-  <!-- TOP HEADER con información de contacto -->
+  <!-- TOP HEADER con información de contacto COMPLETA -->
   <div class="top-header">
-    <div class="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
-      <div class="flex flex-wrap items-center justify-between gap-2 text-white">
+    <div class="container mx-auto px-3 sm:px-4 py-3 sm:py-3">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-white">
+        
         <!-- Logo -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center justify-between sm:justify-start">
           <img src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" 
                alt="DS3 Comunicaciones" 
-               class="h-8 sm:h-9 md:h-10 w-auto bg-white rounded px-2"
+               class="h-9 sm:h-9 md:h-10 w-auto bg-white rounded px-2"
                loading="eager">
+          
+          <!-- Botón de búsqueda móvil -->
+          <button class="sm:hidden p-2 hover:bg-white/20 rounded-lg transition" aria-label="Buscar">
+            <i class="fas fa-search text-base"></i>
+          </button>
         </div>
         
-        <!-- Información de contacto -->
-        <div class="flex flex-1 items-center justify-end gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
-          <a href="tel:994428965" class="flex items-center gap-1.5 hover:text-blue-300 transition">
-            <i class="fas fa-phone text-sm"></i>
-            <span class="font-semibold">994 428 965</span>
+        <!-- Información de contacto COMPLETA en grid responsive -->
+        <div class="contact-grid flex-1 sm:flex sm:items-center sm:justify-end">
+          <!-- Teléfono 1 -->
+          <a href="tel:994428965" class="contact-item hover:text-blue-300">
+            <i class="fas fa-phone flex-shrink-0"></i>
+            <span class="font-semibold whitespace-nowrap">994 428 965</span>
           </a>
           
-          <a href="tel:996533223" class="hidden sm:flex items-center gap-1.5 hover:text-blue-300 transition">
-            <i class="fas fa-phone text-sm"></i>
-            <span class="font-semibold">996 533 223</span>
+          <!-- Teléfono 2 -->
+          <a href="tel:996533223" class="contact-item hover:text-blue-300">
+            <i class="fas fa-phone flex-shrink-0"></i>
+            <span class="font-semibold whitespace-nowrap">996 533 223</span>
           </a>
           
-          <a href="mailto:netperu100@hotmail.com" class="hidden md:flex items-center gap-1.5 hover:text-blue-300 transition">
-            <i class="fas fa-envelope"></i>
-            <span class="text-xs lg:text-sm">netperu100@hotmail.com</span>
+          <!-- Email -->
+          <a href="mailto:netperu100@hotmail.com" class="contact-item hover:text-blue-300 col-span-2 sm:col-span-1">
+            <i class="fas fa-envelope flex-shrink-0"></i>
+            <span class="truncate sm:whitespace-nowrap">netperu100@hotmail.com</span>
           </a>
           
-          <div class="hidden lg:flex items-center gap-1.5">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Lima, PERÚ</span>
+          <!-- Ubicación (visible desde tablet) -->
+          <div class="contact-item hidden md:flex">
+            <i class="fas fa-map-marker-alt flex-shrink-0"></i>
+            <span class="whitespace-nowrap">Lima, PERÚ</span>
           </div>
         </div>
         
-        <!-- Botón de búsqueda -->
-        <button class="p-2 hover:bg-white/20 rounded-lg transition" aria-label="Buscar">
+        <!-- Botón de búsqueda desktop -->
+        <button class="hidden sm:block p-2 hover:bg-white/20 rounded-lg transition" aria-label="Buscar">
           <i class="fas fa-search text-base"></i>
         </button>
       </div>
@@ -288,7 +341,6 @@
   <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40">
     <div class="container mx-auto px-2 md:px-4">
       <div class="nav-container">
-        <!-- Contenedor con scroll horizontal -->
         <div class="flex justify-start md:justify-center overflow-x-auto py-2.5 space-x-2 scrollbar-hide snap-x snap-mandatory">
           
           <!-- Switch Catalyst -->
@@ -460,7 +512,6 @@
             
             <!-- PRODUCT GALLERY -->
             <div class="space-y-4">
-              <!-- Imagen principal grande del cable -->
               <div class="image-container rounded-xl p-5 sm:p-6 lg:p-8">
                 <div class="aspect-square flex items-center justify-center overflow-hidden rounded-lg">
                   <img id="mainImage" 
@@ -472,7 +523,6 @@
                 </div>
               </div>
               
-              <!-- Solo una miniatura de la caja -->
               <button onclick="changeImage('Caja.jpg')" 
                       class="image-container rounded-lg p-3 hover:border-blue-700 transition cursor-pointer w-full">
                 <div class="flex items-center justify-center">
@@ -538,6 +588,10 @@
                   Características principales
                 </h2>
                 <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-emerald-600 text-lg mt-0.5 flex-shrink-0"></i>
+                    <span class="text-base text-slate-700">Chaqueta CMR 23AWG para instalaciones plenum</span>
+                  </li>
                   <li class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-emerald-600 text-lg mt-0.5 flex-shrink-0"></i>
                     <span class="text-base text-slate-700">Compatible con Gigabit Ethernet (1000BASE-TX)</span>
@@ -957,4 +1011,4 @@
     }
   </script>
 </body>
-</html> 
+</html>
